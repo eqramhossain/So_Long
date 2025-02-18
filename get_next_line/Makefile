@@ -6,7 +6,7 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/18 11:31:42 by ehossain          #+#    #+#              #
-#    Updated: 2025/02/18 11:47:30 by ehossain         ###   ########.fr        #
+#    Updated: 2025/02/18 11:53:14 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean
-	make all
+re: fclean all
 
-.PHONY: clean fclean re
+.PHONY: all clean fclean re
