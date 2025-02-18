@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/17 12:26:25 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/18 00:52:35 by ehossain         ###   ########.fr       */
+/*   Created: 2025/02/17 12:28:55 by ehossain          #+#    #+#             */
+/*   Updated: 2025/02/18 14:53:19 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "so_long.h"
 
-# include "Libft/libft.h"
-# include "ft_printf/ft_printf.h"
-# include "get_next_line/get_next_line.h"
-# include "minilibx-linux/mlx.h"
+int	main(void)
+{
+	void	*mlx_connection;
+	void	*mlx_window;
 
-#endif
+	mlx_connection = mlx_init();
+	mlx_window = mlx_new_window(mlx_connection, 1920, 1020, "so_long");
+	mlx_loop(mlx_connection);
+	return (0);
+}
