@@ -6,25 +6,19 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:28:55 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/17 12:34:28 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/18 10:27:40 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int ac, char *av[])
+int	main(void)
 {
-	char	*str;
+	void	*mlx_connection;
+	void	*mlx_window;
 
-	if (ac > 1)
-	{
-		ft_printf("av[i] = %d\n", av[1]);
-		ft_printf("ft_strlen = %z\n", ft_strlen(av[1]);
-		while (str) 
-		{
-			str = get_next_line(av[2]);
-			ft_printf("str = %s", str);
-		}
-	}
+	mlx_connection = mlx_init();
+	mlx_window = mlx_new_window(mlx_connection, 1920, 1020, "so_long");
+	mlx_loop(mlx_connection);
 	return (0);
 }
