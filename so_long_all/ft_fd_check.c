@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_fd_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/17 12:26:25 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/19 14:31:11 by ehossain         ###   ########.fr       */
+/*   Created: 2025/02/19 12:16:48 by ehossain          #+#    #+#             */
+/*   Updated: 2025/02/19 12:19:42 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "so_long.h"
 
-# include "../ft_printf/ft_printf.h"
-# include "../get_next_line/get_next_line.h"
-# include "../libft/libft.h"
-# include "../minilibx/mlx.h"
-# include "structure.h"
-# include <errno.h>
+int	ft_fd_check(char *name)
+{
+	int	len;
 
-int	ft_fd_check(char *name);
-
-#endif
+	len = ft_strlen(name);
+	if (ft_strnstr(name, ".ber", len))
+	{
+		return (1);
+	}
+	return (0);
+}
