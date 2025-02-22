@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:26:25 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/19 14:31:11 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/20 11:35:24 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../get_next_line/get_next_line.h"
 # include "../libft/libft.h"
 # include "../minilibx/mlx.h"
+# include "../minilibx_mac/mlx.h"
 # include "structure.h"
 # include <errno.h>
 

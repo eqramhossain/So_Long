@@ -6,11 +6,11 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/17 12:34:44 by ehossain          #+#    #+#              #
-#    Updated: 2025/02/19 12:50:08 by ehossain         ###   ########.fr        #
+#    Updated: 2025/02/20 11:55:59 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SOURCE = $(shell find ./so_long_all -name "*.c")
+SOURCE = $(shell find ./so_long_mandatory -name "*.c")
 OBJ = $(SOURCE:.c=.o)
 LIB_LIBFT= ./libft/libft.a
 LIB_FT_PRINTF= ./ft_printf/libftprintf.a
@@ -23,15 +23,27 @@ CFLAGS= -Wall -Wextra -Werror
 all: $(NAME)
 
 # -------------------------- FOR LINUX ------------------------------
+#
+# $(NAME): $(OBJ) $(LIB_LIBFT) $(LIB_FT_PRINTF) $(LIB_GET_NEXT_LINE)
+# 	$(CC) $(CFLAGS) $(OBJ) $(LIB_COMBINE) -Lmlx_linux -lmlx_Linux -L/usr/lib \
+# 	-Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+#
+# %.o: %.c
+# 	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@ 
+#
+# -------------------------- FOR LINUX ------------------------------
+
+# -------------------------- FOR MACOS ------------------------------
 
 $(NAME): $(OBJ) $(LIB_LIBFT) $(LIB_FT_PRINTF) $(LIB_GET_NEXT_LINE)
-	$(CC) $(CFLAGS) $(OBJ) $(LIB_COMBINE) -Lmlx_linux -lmlx_Linux -L/usr/lib \
-	-Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(LIB_COMBINE) -Lminilibx_mac -lmlx -framework OpenGL -framework AppKit \
+	-o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@ 
+	$(CC) -Wall -Wextra -Werror -Iminilibx_mac -c $< -o $@
 
-# -------------------------- FOR LINUX ------------------------------
+# -------------------------- FOR MACOS ------------------------------
+
 $(LIB_LIBFT):
 	@make -C libft 
 
@@ -47,7 +59,7 @@ clean:
 	@make clean -C ft_printf 
 	@make clean -C get_next_line 
 
-fclean:
+fclean: clean
 	rm -f $(NAME)
 	@make fclean -C libft 
 	@make fclean -C ft_printf 
@@ -62,6 +74,6 @@ norm:
 	norminette libft
 	norminette ft_printf
 	norminette get_next_line
-	norminette so_long_all
+	norminette so_long_mandatory
 
 .PHONY: clean fclean re all norm
