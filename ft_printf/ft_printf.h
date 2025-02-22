@@ -6,12 +6,13 @@
 /*   By: ehossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 09:35:37 by ehossain          #+#    #+#             */
-/*   Updated: 2024/12/13 16:42:30 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/22 20:35:19 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+
 # include <stdarg.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -27,4 +28,5 @@ unsigned int	ft_number_size(long int nb);
 int				ft_puthexa_min(unsigned int nb);
 int				ft_puthexa_maj(unsigned int nb);
 int				ft_putptr(void *add);
+
 #endif

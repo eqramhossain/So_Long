@@ -6,14 +6,13 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/18 11:31:42 by ehossain          #+#    #+#              #
-#    Updated: 2025/02/18 11:53:14 by ehossain         ###   ########.fr        #
+#    Updated: 2025/02/22 20:26:02 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC= gcc
 CFLAGS= -Wall -Wextra -Werror
-SOURCE= get_next_line_bonus.c  get_next_line.c  get_next_line_utils_bonus.c \
-		get_next_line_utils.c
+SOURCE= get_next_line.c get_next_line_utils.c
 
 NAME= get_next_line.a
 OBJECT= ${SOURCE:.c=.o}
