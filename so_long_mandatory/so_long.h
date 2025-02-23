@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:26:25 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/22 19:33:10 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/23 14:27:01 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include "structure.h"
 # include <errno.h>
 
-int		ft_file_check(char *name);
-int		ft_null_format_check(char *file_name);
+int		ft_file_check(char *file_name);
+char	*ft_map_check(char *file_name);
 void	ft_print_error(char *str);
 
 #endif

@@ -6,19 +6,19 @@
 /*   By: ehossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:32:36 by ehossain          #+#    #+#             */
-/*   Updated: 2025/01/02 19:41:00 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/23 13:44:24 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-// int	main(void)
+// int	main(int ac, char *av[])
 // {
-// 	int		fd;
 // 	char	*next_line;
+// 	int		fd;
 //
-// 	fd = 0;
-// 	fd = open("one_million.txt", O_RDONLY);
+// 	(void)ac;
+// 	fd = open(av[1], O_RDONLY);
 // 	next_line = ft_calloc(1, sizeof(char));
 // 	while (next_line != NULL)
 // 	{
