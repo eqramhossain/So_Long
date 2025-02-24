@@ -6,7 +6,7 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/17 12:34:44 by ehossain          #+#    #+#              #
-#    Updated: 2025/02/23 13:51:44 by ehossain         ###   ########.fr        #
+#    Updated: 2025/02/24 09:46:23 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,25 +23,25 @@ CFLAGS= -Wall -Wextra -Werror
 all: $(NAME)
 
 # -------------------------- FOR LINUX ------------------------------
-#
-# $(NAME): $(OBJ) $(LIB_LIBFT) $(LIB_FT_PRINTF) $(LIB_GET_NEXT_LINE)
-# 	$(CC) $(CFLAGS) $(OBJ) $(LIB_COMBINE) -Lmlx_linux -lmlx_Linux -L/usr/lib \
-# 	-Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
-#
-# %.o: %.c
-# 	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@ 
-#
+
+$(NAME): $(OBJ) $(LIB_LIBFT) $(LIB_FT_PRINTF) $(LIB_GET_NEXT_LINE)
+	$(CC) $(CFLAGS) $(OBJ) $(LIB_COMBINE) -Lmlx_linux  -L/usr/lib \
+	-Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@ 
+
 # -------------------------- FOR LINUX ------------------------------
 
 # -------------------------- FOR MACOS ------------------------------
-
-$(NAME): $(OBJ) $(LIB_LIBFT) $(LIB_FT_PRINTF) $(LIB_GET_NEXT_LINE)
-	$(CC) $(CFLAGS) $(OBJ) $(LIB_COMBINE) -Lminilibx_mac -lmlx -framework OpenGL -framework AppKit \
-	-o $(NAME)
-
-%.o: %.c
-	$(CC) -Wall -Wextra -Werror -Iminilibx_mac -c $< -o $@
-
+#
+# $(NAME): $(OBJ) $(LIB_LIBFT) $(LIB_FT_PRINTF) $(LIB_GET_NEXT_LINE)
+# 	$(CC) $(CFLAGS) $(OBJ) $(LIB_COMBINE) -Lminilibx_mac -lmlx -framework OpenGL -framework AppKit \
+# 	-o $(NAME)
+#
+# %.o: %.c
+# 	$(CC) -Wall -Wextra -Werror -Iminilibx_mac -c $< -o $@
+#
 # -------------------------- FOR MACOS ------------------------------
 
 $(LIB_LIBFT):

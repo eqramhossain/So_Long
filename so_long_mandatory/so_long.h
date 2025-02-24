@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:26:25 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/23 14:27:01 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/24 20:36:18 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,18 @@
 # include "structure.h"
 # include <errno.h>
 
-int		ft_file_check(char *file_name);
-char	*ft_map_check(char *file_name);
+/* function that check if the map file and the map is valid */
+int		ft_is_file_ok(char *file_name);
+char	*ft_is_map_ok(char *file_name);
+int		ft_is_map_rectangular(char *full_map);
+int		ft_is_map_closed(char *full_map);
+int		ft_is_closed_top_bottom(char *full_map, int line, int line_len);
+int		ft_is_closed_left_right(char *full_map, int line, int line_len);
+int		ft_is_all_character_present(char *full_map, t_map *map);
+
+/* function that print error in stderr and exit the program */
 void	ft_print_error(char *str);
 
+/* these functions initialize structures  */
+void	ft_initialize_t_map(t_map *map);
 #endif

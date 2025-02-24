@@ -6,7 +6,7 @@
 /*   By: ehossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:11:56 by ehossain          #+#    #+#             */
-/*   Updated: 2024/11/19 14:36:58 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/24 19:28:00 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!dest)
 		return (NULL);
 	i = 0;
-	while (i < ft_strlen(s1))
+	while (s1[i])
 	{
 		dest[i] = s1[i];
 		i++;
 	}
 	j = 0;
-	while (j < ft_strlen(s2))
+	while (s2[j])
 	{
 		dest[j + i] = s2[j];
 		j++;

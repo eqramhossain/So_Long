@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_error.c                                   :+:      :+:    :+:   */
+/*   ft_struct_initialize.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/22 19:31:36 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/24 10:38:30 by ehossain         ###   ########.fr       */
+/*   Created: 2025/02/24 17:14:52 by ehossain          #+#    #+#             */
+/*   Updated: 2025/02/24 17:21:12 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_print_error(char *str)
+void	ft_initialize_t_map(t_map *map)
 {
-	if (!str)
-		return ;
-	ft_putstr_fd("ERROR:\n", 2);
-	ft_putstr_fd(str, 2);
-	exit(EXIT_FAILURE);
+	map->i = 0;
+	map->empty_space = 0;
+	map->wall = 0;
+	map->collectible = 0;
+	map->exit = 0;
+	map->player = 0;
 }

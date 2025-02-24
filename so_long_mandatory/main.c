@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:28:55 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/23 14:24:25 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/24 20:36:21 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	main(int ac, char *av[])
 {
 	if (ac == 2)
 	{
-		ft_file_check(av[1]);
-		ft_map_check(av[1]);
+		ft_is_file_ok(av[1]);
+		ft_is_map_ok(av[1]);
 	}
 	return (0);
 }

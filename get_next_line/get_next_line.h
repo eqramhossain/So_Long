@@ -6,7 +6,7 @@
 /*   By: ehossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:13:42 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/22 20:28:37 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/24 09:39:44 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
 # endif
