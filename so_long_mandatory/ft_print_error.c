@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:31:36 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/25 11:19:52 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/25 17:14:17 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ void	ft_print_error(char *str)
 	ft_putstr_fd("\e[31m", 2);
 	ft_putstr_fd(str, 2);
 	ft_putstr_fd("\e[0m", 2);
-	exit(EXIT_FAILURE);
+	// exit(EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 12:16:48 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/25 14:39:46 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/25 17:14:37 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ int	ft_is_map_closed(char *full_map)
 		count++;
 	}
 	if (line < 3)
+	{
 		ft_print_error("this map is too small to be a map");
+		return (1);
+	}
 	else
 	{
 		ft_is_closed_top_bottom(full_map, line, count / line);
