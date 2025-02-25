@@ -6,7 +6,7 @@
 /*   By: ehossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:32:36 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/23 13:44:24 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/25 16:54:07 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 //
 // 	(void)ac;
 // 	fd = open(av[1], O_RDONLY);
-// 	next_line = ft_calloc(1, sizeof(char));
+// 	next_line = ft_calloc_gnl(1, sizeof(char));
 // 	while (next_line != NULL)
 // 	{
 // 		free(next_line);
@@ -62,8 +62,8 @@ char	*ft_read_file(int fd, char *buffer)
 
 	read_bytes = 1;
 	if (!buffer)
-		buffer = ft_calloc(1, sizeof(char));
-	tmp_buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+		buffer = ft_calloc_gnl(1, sizeof(char));
+	tmp_buffer = ft_calloc_gnl(BUFFER_SIZE + 1, sizeof(char));
 	if (!tmp_buffer)
 		return (NULL);
 	while (read_bytes > 0)
@@ -74,10 +74,10 @@ char	*ft_read_file(int fd, char *buffer)
 			return (free(buffer), free(tmp_buffer), NULL);
 		}
 		tmp_buffer[read_bytes] = '\0';
-		buffer = ft_str_free_join(buffer, tmp_buffer);
+		buffer = ft_str_free_join_gnl(buffer, tmp_buffer);
 		if (!buffer)
 			return (NULL);
-		if (ft_strchr(buffer, '\n'))
+		if (ft_strchr_gnl(buffer, '\n'))
 			break ;
 	}
 	free(tmp_buffer);
@@ -94,7 +94,7 @@ char	*ft_set_line(char *buffer)
 		return (NULL);
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
-	tmp_buffer = ft_calloc(i + 2, sizeof(char));
+	tmp_buffer = ft_calloc_gnl(i + 2, sizeof(char));
 	if (!tmp_buffer)
 		return (NULL);
 	i = 0;
@@ -126,7 +126,7 @@ char	*ft_set_remaining(char *buffer)
 		free(buffer);
 		return (NULL);
 	}
-	tmp_buffer = ft_calloc(ft_strlen(buffer) - i + 1, sizeof(char));
+	tmp_buffer = ft_calloc_gnl(ft_strlen_gnl(buffer) - i + 1, sizeof(char));
 	if (!tmp_buffer)
 		return (NULL);
 	i++;
