@@ -6,7 +6,7 @@
 /*   By: ehossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:17:48 by ehossain          #+#    #+#             */
-/*   Updated: 2024/11/23 11:49:32 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/25 21:17:12 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 
 char		**ft_split(char const *str, char c);
-static void	ft_freeup(char *strs);
+static void	ft_freeup(char **str);
 static int	ft_countword(const char *str, char c);
 static void	ft_strcpy(char *word, char *str, char c, int j);
 static char	*ft_stralloc(char *str, char c, int *k);
@@ -27,11 +27,14 @@ static char	*ft_stralloc(char *str, char c, int *k);
 //
 // 	c = '/';
 // 	ptr_split = ft_split(str, c);
+// 	if (!ptr_split)
+// 		return (0);
 // 	for (int i = 0; i < 5; i++)
 // 	{
 // 		printf("the ptr_split[%d] = %s\n", i, ptr_split[i]);
 // 	}
 // 	printf("counted word in str = %d\n", ft_countword(str, c));
+// 	ft_freeup(ptr_split);
 // 	return (0);
 // }
 
@@ -56,7 +59,8 @@ char	**ft_split(char const *str, char c)
 		ptr_str[i] = ft_stralloc(((char *)str), c, &k);
 		if (ptr_str[i] == NULL)
 		{
-			ft_freeup(ptr_str[i]);
+			ft_freeup(ptr_str);
+			return (NULL);
 		}
 		i++;
 	}
@@ -112,17 +116,19 @@ static char	*ft_stralloc(char *str, char c, int *k)
 	return (word);
 }
 
-static void	ft_freeup(char *strs)
+static void	ft_freeup(char **str)
 {
 	int	i;
 
 	i = 0;
-	while (strs[i] != '\0')
+	if (!str)
+		return ;
+	while (str[i] != NULL)
 	{
-		free(strs);
+		free(str[i]);
 		i++;
 	}
-	free(strs);
+	free(str);
 }
 
 static void	ft_strcpy(char *word, char *str, char c, int j)

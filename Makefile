@@ -6,7 +6,7 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/17 12:34:44 by ehossain          #+#    #+#              #
-#    Updated: 2025/02/25 19:34:58 by ehossain         ###   ########.fr        #
+#    Updated: 2025/02/25 21:43:56 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,4 +77,9 @@ norm:
 	norminette get_next_line
 	norminette so_long_mandatory
 
+leack:
+	valgrind ./so_long ./so_long_maps/small_map.ber
+
+funcheck:
+	funcheck ./so_long ./so_long_maps/small_map.ber
 .PHONY: clean fclean re all norm

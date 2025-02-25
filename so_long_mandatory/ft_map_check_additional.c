@@ -6,35 +6,35 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 12:16:48 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/25 17:49:29 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/25 22:15:54 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_is_map_rectangular(char *full_map)
+int	ft_is_map_rectangular(char *full_map, t_line_length *line_length)
 {
-	int	i;
-	int	current_line_length;
-	int	first_line_length;
-
-	i = 0;
-	current_line_length = 0;
-	first_line_length = 0;
-	while (full_map[first_line_length] != '\n')
-		first_line_length++;
-	while (full_map[i])
+	ft_initialize_t_line_length(line_length);
+	if (!full_map)
+		return (0);
+	while (full_map[line_length->first] != '\n')
+		line_length->first++;
+	while (full_map[line_length->i])
 	{
-		if (full_map[i] == '\n' || full_map[i] == '\0')
+		if (full_map[line_length->i] == '\n'
+			|| full_map[line_length->i] == '\0')
 		{
-			if (first_line_length != current_line_length)
+			if (line_length->first != line_length->current)
+			{
 				ft_print_error("This map is not rectangular");
+				return (1);
+			}
 			else
-				current_line_length = 0;
+				line_length->current = 0;
 		}
 		else
-			current_line_length++;
-		i++;
+			line_length->current++;
+		line_length->i++;
 	}
 	return (0);
 }
@@ -98,8 +98,8 @@ int	ft_is_closed_left_right(char *full_map, int line, int line_len)
 	while (row < line - 1)
 	{
 		start_index = row * line_len;
-		if (full_map[start_index] != '1' || full_map[start_index + (line_len
-				- 2)] != '1')
+		if (full_map[start_index] != '1' \
+				|| full_map[start_index + (line_len - 2)] != '1')
 		{
 			ft_print_error("Map is not surrounded by walls on left/right");
 		}

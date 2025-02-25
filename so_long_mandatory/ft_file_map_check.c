@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 20:26:18 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/25 17:58:26 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/25 22:15:00 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 char	*ft_file_map_check(char *file_name)
 {
-	char	*full_map;
-	t_map	map;
+	char			*full_map;
+	t_map			map;
+	t_line_length	line_length;
 
 	if (ft_is_file_ok(file_name) == 1)
 		return (NULL);
 	full_map = ft_read_map(file_name);
 	if (full_map == NULL)
 		return (free(full_map), NULL);
-	else if (ft_is_map_rectangular(full_map) == 1)
+	else if (ft_is_map_rectangular(full_map, &line_length) == 1)
 		return (free(full_map), NULL);
 	else if (ft_is_map_closed(full_map) == 1)
 		return (free(full_map), NULL);
@@ -68,10 +69,7 @@ char	*ft_read_map(char *file_name)
 
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
-	{
-		ft_print_error("File not found check if you have the permissions");
-		return (NULL);
-	}
+		return (ft_print_error("File not found"), NULL);
 	next_line = ft_calloc(1, sizeof(char));
 	if (!next_line)
 		return (NULL);
@@ -82,9 +80,11 @@ char	*ft_read_map(char *file_name)
 	{
 		free(next_line);
 		next_line = get_next_line(fd);
-		if (next_line)
-			full_map = ft_str_free_join_gnl(full_map, next_line);
+		if (!next_line)
+		{
+			return (free(next_line), free(full_map), NULL);
+		}
+		full_map = ft_str_free_join_gnl(full_map, next_line);
 	}
-	free(next_line);
-	return (close(fd), full_map);
+	return (free(next_line), close(fd), full_map);
 }

@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 14:29:37 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/24 17:21:20 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/25 21:55:33 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,11 @@ typedef struct s_map
 	int		player;
 }			t_map;
 
+typedef struct s_line_length
+{
+	int		i;
+	int		current;
+	int		first;
+
+}			t_line_length;
 #endif
