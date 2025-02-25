@@ -6,7 +6,7 @@
 /*   By: ehossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:44:03 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/25 16:52:52 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/25 19:26:30 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ char	*ft_strjoin_gnl(char const *s1, char const *s2)
 	dest[i + j] = '\0';
 	return (dest);
 }
+
 char	*ft_str_free_join_gnl(char *str1, char *str2)
 {
 	char	*tmp_buffer;

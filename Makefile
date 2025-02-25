@@ -6,7 +6,7 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/17 12:34:44 by ehossain          #+#    #+#              #
-#    Updated: 2025/02/24 09:46:23 by ehossain         ###   ########.fr        #
+#    Updated: 2025/02/25 19:34:58 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ $(NAME): $(OBJ) $(LIB_LIBFT) $(LIB_FT_PRINTF) $(LIB_GET_NEXT_LINE)
 	-Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@ 
+	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 # -------------------------- FOR LINUX ------------------------------
 
@@ -65,13 +65,14 @@ fclean: clean
 	@make fclean -C ft_printf 
 	@make fclean -C get_next_line 
 
-re: fclean all 
+re: fclean 
 	@make re -C libft 
 	@make re -C ft_printf 
 	@make re -C get_next_line
+	make all 
 
 norm:
-	norminette libft
+	norminette libft 
 	norminette ft_printf
 	norminette get_next_line
 	norminette so_long_mandatory
