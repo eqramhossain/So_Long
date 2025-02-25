@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 20:26:18 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/25 17:23:07 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/25 17:58:26 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,17 @@ char	*ft_file_map_check(char *file_name)
 	char	*full_map;
 	t_map	map;
 
-	ft_is_file_ok(file_name);
+	if (ft_is_file_ok(file_name) == 1)
+		return (NULL);
 	full_map = ft_read_map(file_name);
 	if (full_map == NULL)
-	{
-		free(full_map);
-		return (NULL);
-	}
-	if (ft_is_map_rectangular(full_map) == 1)
-		free(full_map);
-	if (ft_is_map_closed(full_map) == 1)
-		free(full_map);
-	if (ft_is_all_character_present(full_map, &map) == 1)
-		free(full_map);
+		return (free(full_map), NULL);
+	else if (ft_is_map_rectangular(full_map) == 1)
+		return (free(full_map), NULL);
+	else if (ft_is_map_closed(full_map) == 1)
+		return (free(full_map), NULL);
+	else if (ft_is_all_character_present(full_map, &map) == 1)
+		return (free(full_map), NULL);
 	return (full_map);
 }
 
@@ -55,7 +53,8 @@ int	ft_is_file_ok(char *file_name)
 	if (line == NULL)
 	{
 		ft_print_error("File is empty");
-		return (close(fd), free(line), 1);
+		free(line);
+		return (close(fd), 1);
 	}
 	free(line);
 	return (0);
@@ -78,7 +77,7 @@ char	*ft_read_map(char *file_name)
 		return (NULL);
 	full_map = ft_calloc(1, sizeof(char));
 	if (!full_map)
-		return ((NULL));
+		return (free(next_line), NULL);
 	while (next_line != NULL)
 	{
 		free(next_line);
