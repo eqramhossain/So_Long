@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 12:16:48 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/24 20:43:22 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/25 14:39:46 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	ft_is_map_rectangular(char *full_map)
 			current_line_length++;
 		i++;
 	}
-	ft_is_map_closed(full_map);
 	return (0);
 }
 
@@ -88,23 +87,21 @@ int	ft_is_closed_top_bottom(char *full_map, int line, int line_len)
 
 int	ft_is_closed_left_right(char *full_map, int line, int line_len)
 {
-	int		row;
-	int		start_index;
-	t_map	map;
+	int	row;
+	int	start_index;
 
 	row = 1;
 	start_index = 0;
 	while (row < line - 1)
 	{
 		start_index = row * line_len;
-		if (full_map[start_index] != '1' \
-				|| full_map[start_index + (line_len - 2)] != '1')
+		if (full_map[start_index] != '1' || full_map[start_index + (line_len
+				- 2)] != '1')
 		{
 			ft_print_error("Map is not surrounded by walls on left/right");
 		}
 		row++;
 	}
-	ft_is_all_character_present(full_map, &map);
 	return (0);
 }
 
