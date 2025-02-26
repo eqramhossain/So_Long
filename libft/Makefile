@@ -17,13 +17,15 @@ CFLAGS = -Wall -Wextra -Werror
 all : $(NAME)
 
 $(NAME) : $(OBJECT)
-	ar rcs $(NAME) $(OBJECT)
+	@ar rcs $(NAME) $(OBJECT)
+%.o:%.c
+	@$(CC) $(CFLAGS) -c $< -o $@
 clean : 
-	rm -f $(OBJECT) $(OBJECT_BONUS)
+	@rm -f $(OBJECT) $(OBJECT_BONUS)
 fclean : clean
-	rm -f $(NAME) $(OBJECT_BONUS)
+	@rm -f $(NAME) $(OBJECT_BONUS)
 re : fclean all
 bonus : $(OBJECT) $(OBJECT_BONUS)
-	ar rcs  $(NAME) $(OBJECT_BONUS) $(OBJECT)
+	@ar rcs  $(NAME) $(OBJECT_BONUS) $(OBJECT)
 
 .PHONY: clean fclean re all

@@ -6,18 +6,19 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:26:25 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/25 22:05:40 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/26 21:35:15 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../ft_printf/ft_printf.h"
-# include "../get_next_line/get_next_line.h"
-# include "../libft/libft.h"
-# include "../minilibx/mlx.h"
-# include "../minilibx_mac/mlx.h"
+# include "ft_printf.h"
+# include "get_next_line.h"
+# include "libft.h"
+# include "mlx.h"
+# include "mlx_int.h"
+// # include "../minilibx_mac/mlx.h"
 # include "structure.h"
 # include <errno.h>
 
@@ -30,7 +31,9 @@ int		ft_is_map_closed(char *full_map);
 int		ft_is_closed_top_bottom(char *full_map, int line, int line_len);
 int		ft_is_closed_left_right(char *full_map, int line, int line_len);
 int		ft_is_all_character_present(char *full_map, t_map *map);
-
+int		ft_flood_fill(char *full_map);
+int		ft_flood_fill_verif(char **map, t_position player_pos,
+			t_position count);
 /* function that print error in stderr and exit the program */
 void	ft_print_error(char *str);
 

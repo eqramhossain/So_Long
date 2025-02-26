@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 20:26:18 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/25 22:15:00 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/26 21:35:00 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ char	*ft_file_map_check(char *file_name)
 		return (free(full_map), NULL);
 	else if (ft_is_all_character_present(full_map, &map) == 1)
 		return (free(full_map), NULL);
+	else if (ft_flood_fill(full_map) == 1)
+		return (NULL);
 	return (full_map);
 }
 
@@ -58,6 +60,7 @@ int	ft_is_file_ok(char *file_name)
 		return (close(fd), 1);
 	}
 	free(line);
+	close(fd);
 	return (0);
 }
 
@@ -82,9 +85,66 @@ char	*ft_read_map(char *file_name)
 		next_line = get_next_line(fd);
 		if (!next_line)
 		{
-			return (free(next_line), free(full_map), NULL);
+			free(next_line);
+			break ;
 		}
 		full_map = ft_str_free_join_gnl(full_map, next_line);
+		if (!full_map)
+			return (free(next_line), free(full_map), NULL);
 	}
-	return (free(next_line), close(fd), full_map);
+	return (close(fd), full_map);
+}
+
+int	ft_flood_fill(char *full_map)
+{
+	char		**map;
+	t_position	player_pos;
+	t_position	count;
+	int			i;
+
+	ft_inisialize(&count.x, &count.y);
+	map = ft_split(full_map, '\n');
+	if (!map)
+		return (ft_freeup(map), 1);
+	while (map[count.x])
+	{
+		count.y = 0;
+		while (map[count.x][count.y])
+		{
+			if (map[count.x][count.y] == 'P')
+			{
+				player_pos.x = count.x;
+				player_pos.y = count.y;
+			}
+			count.y++;
+		}
+		count.x++;
+	}
+	printf("x = %d\n", count.x);
+	printf("y = %d\n", count.y);
+	printf("player_pos.x = %d\n", player_pos.x);
+	printf("player_pos.y = %d\n", player_pos.y);
+	i = ft_flood_fill_verif(map, player_pos, count);
+	printf("i = %d\n", i);
+	return (0);
+}
+
+int	ft_flood_fill_verif(char **map, t_position player_pos, t_position count)
+{
+	if (player_pos.x < 0 || player_pos.x >= count.x || player_pos.y < 0
+		|| player_pos.y >= count.y || ((map[player_pos.x][player_pos.y] != '0')
+			&& (map[player_pos.x][player_pos.y] != 'C')
+			&& (map[player_pos.x][player_pos.y] != 'E')
+			&& (map[player_pos.x][player_pos.y] != 'P')))
+		return (1);
+	map[player_pos.x][player_pos.y] = 'F';
+	ft_flood_fill_verif(map, (t_position){player_pos.x + 1, player_pos.y},
+		count);
+	ft_flood_fill_verif(map, (t_position){player_pos.x - 1, player_pos.y},
+		count);
+	ft_flood_fill_verif(map, (t_position){player_pos.x, player_pos.y + 1},
+		count);
+	ft_flood_fill_verif(map, (t_position){player_pos.x, player_pos.y - 1},
+		count);
+	return (0);
 }

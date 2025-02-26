@@ -6,7 +6,7 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/18 11:31:42 by ehossain          #+#    #+#              #
-#    Updated: 2025/02/25 16:50:55 by ehossain         ###   ########.fr        #
+#    Updated: 2025/02/26 14:32:40 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,14 @@ OBJECT= ${SOURCE:.c=.o}
 all: $(NAME)
 
 $(NAME): $(OBJECT) 
-	ar rcs $(NAME) $(OBJECT) 
-
+	@ar rcs $(NAME) $(OBJECT) 
+%.o:%.c
+	@$(CC) $(CFLAGS) -c $< -o $@
 clean:
-	rm -f $(OBJECT)
+	@rm -f $(OBJECT)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
