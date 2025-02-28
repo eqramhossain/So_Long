@@ -6,24 +6,21 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/17 12:34:44 by ehossain          #+#    #+#              #
-#    Updated: 2025/02/26 19:23:55 by ehossain         ###   ########.fr        #
+#    Updated: 2025/02/28 09:41:40 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SOURCE = $(shell find ./so_long_mandatory -name "*.c")
 OBJ = $(SOURCE:.c=.o)
-LIB_LIBFT= ./libft/libft.a
-LIB_FT_PRINTF= ./ft_printf/libftprintf.a
-LIB_GET_NEXT_LINE= ./get_next_line/get_next_line.a
-LIB_COMBINE = $(LIB_LIBFT) $(LIB_FT_PRINTF) $(LIB_GET_NEXT_LINE)
-NAME= so_long
-CC= gcc
-CFLAGS= -Wall -Wextra -Werror
+LIBFT = ./libft/libft.a
+NAME = so_long
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -g3
 MAKE = make --no-print-directory
 # TEST= $(shell find so_long)
 
 all: $(NAME)
-
+	@echo "so_long compiled"
 
 # @if [ "$(TEST)" = "$(NAME)" ]; then \
 # 	echo "hello world"; \
@@ -31,62 +28,42 @@ all: $(NAME)
 
 
 # -------------------------- FOR LINUX ------------------------------
-
-$(NAME): $(OBJ) $(LIB_LIBFT) $(LIB_FT_PRINTF) $(LIB_GET_NEXT_LINE)
-	@$(CC) $(CFLAGS) $(OBJ) $(LIB_COMBINE) -Lminilibx \
-		-lmlx -lXext -lX11 -lm -lz -o $(NAME)
-
-%.o: %.c
-	@$(CC) $(CFLAGS) -Ilibft -Iso_long_mandatory -Ift_printf \
-		-Iget_next_line -Iminilibx -O3 -c $< -o $@ 
-
+#
+# $(NAME): $(OBJ) $(LIBFT)
+# 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -Lminilibx -lmlx -lXext -lX11 -lm -lz -o $(NAME)
+#
+# %.o: %.c
+# 	@$(CC) $(CFLAGS) -Ilibft -Iso_long_mandatory -Iminilibx -O3 -c $< -o $@ 
+#
 # -------------------------- FOR LINUX ------------------------------
 
 # -------------------------- FOR MACOS ------------------------------
-#
-# $(NAME): $(OBJ) $(LIB_LIBFT) $(LIB_FT_PRINTF) $(LIB_GET_NEXT_LINE)
-# 	$(CC) $(CFLAGS) $(OBJ) $(LIB_COMBINE) -Lminilibx_mac -lmlx -framework OpenGL -framework AppKit \
-# 	-o $(NAME)
-#
-# %.o: %.c
-# 	$(CC) $(CFLAGS) -Iminilibx_mac -c $< -o $@
-#
+
+$(NAME): $(OBJ) $(LIBFT)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -Lminilibx_mac -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+
+%.o: %.c
+	@$(CC) $(CFLAGS) -Ilibft -Iminilibx_mac -c $< -o $@
+
 # -------------------------- FOR MACOS ------------------------------
 
-$(LIB_LIBFT):
+$(LIBFT):
 	@$(MAKE) -C libft
-
-$(LIB_FT_PRINTF):
-	@$(MAKE) -C ft_printf
-
-$(LIB_GET_NEXT_LINE):
-	@$(MAKE) -C get_next_line 
 
 clean: 
 	@rm -f $(OBJ)
 	@$(MAKE) clean -C libft
-	@$(MAKE) clean -C ft_printf 
-	@$(MAKE) clean -C get_next_line 
-	@echo "so_long cleaned"
 
 fclean: clean
 	@rm -f $(NAME)
 	@$(MAKE) fclean -C libft 
-	@$(MAKE) fclean -C ft_printf 
-	@$(MAKE) fclean -C get_next_line
-	@echo "so_long fcleaned"
 
-re: fclean 
+re: fclean all 
 	@$(MAKE) re -C libft 
-	@$(MAKE) re -C ft_printf 
-	@$(MAKE) re -C get_next_line
 	@$(MAKE) all 
-	@echo "so_long recomplied"
 
 norm:
 	norminette libft 
-	norminette ft_printf
-	norminette get_next_line
 	norminette so_long_mandatory
 
 leack:

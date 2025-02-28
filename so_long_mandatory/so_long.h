@@ -6,19 +6,15 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:26:25 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/26 21:35:15 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/28 09:06:48 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "ft_printf.h"
-# include "get_next_line.h"
 # include "libft.h"
 # include "mlx.h"
-# include "mlx_int.h"
-// # include "../minilibx_mac/mlx.h"
 # include "structure.h"
 # include <errno.h>
 

@@ -6,14 +6,14 @@
 /*   By: ehossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:13:42 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/25 16:52:19 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/28 09:00:27 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include "../libft/libft.h"
+# include "../libft.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>

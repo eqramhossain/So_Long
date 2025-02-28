@@ -5,26 +5,37 @@ ft_atoi.c ft_strdup.c ft_calloc.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split
 ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_itoa.c ft_strmapi.c ft_striteri.c \
 ft_putnbr_fd.c
 
+SOURCE_GET_NEXT_LINE = ${shell find ./get_next_line -name "*.c"}
+
+SOURCE_FT_PRINTF = ${shell find ./ft_printf -name "*.c"}
+
 BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
 ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
 NAME = libft.a
-OBJECT = ${SOURCE:.c=.o} 
+OBJECT = ${SOURCE:.c=.o}
+OBJECT_GET_NEXT_LINE = ${SOURCE_GET_NEXT_LINE:.c=.o}
+OBJECT_FT_PRINTF = ${SOURCE_FT_PRINTF:.c=.o}
 OBJECT_BONUS = ${BONUS:.c=.o}
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
 
-$(NAME) : $(OBJECT)
-	@ar rcs $(NAME) $(OBJECT)
+$(NAME) : $(OBJECT) $(OBJECT_FT_PRINTF) $(OBJECT_GET_NEXT_LINE)
+	@ar rcs $(NAME) $(OBJECT) $(OBJECT_FT_PRINTF) $(OBJECT_GET_NEXT_LINE)
+
 %.o:%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
+
 clean : 
-	@rm -f $(OBJECT) $(OBJECT_BONUS)
+	@rm -f $(OBJECT) $(OBJECT_BONUS) $(OBJECT_FT_PRINTF) $(OBJECT_GET_NEXT_LINE)
+
 fclean : clean
-	@rm -f $(NAME) $(OBJECT_BONUS)
+	@rm -f $(NAME)
+
 re : fclean all
+
 bonus : $(OBJECT) $(OBJECT_BONUS)
 	@ar rcs  $(NAME) $(OBJECT_BONUS) $(OBJECT)
 
