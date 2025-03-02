@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_so_long_main.c                                  :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/17 12:28:55 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/26 20:54:41 by ehossain         ###   ########.fr       */
+/*   Created: 2025/02/22 19:31:36 by ehossain          #+#    #+#             */
+/*   Updated: 2025/02/28 15:26:40 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int ac, char *av[])
+void	ft_error(char *str)
 {
-	char	*full_map;
-
-	if (ac != 2)
-		return (ft_print_error("File not found!"), 0);
-	full_map = ft_file_map_check(av[1]);
-	if (full_map == NULL)
-		return (free(full_map), 1);
-	return (free(full_map), 0);
+	if (!str)
+		return ;
+	ft_putstr_fd("\e[31mERROR: \e[0m\n", 2);
+	ft_putstr_fd("\e[31m", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("\e[0m\n", 2);
+	return ;
 }
 
 void	ft_freeup(char **str)

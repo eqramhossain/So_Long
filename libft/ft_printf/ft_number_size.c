@@ -6,13 +6,13 @@
 /*   By: ehossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:34:08 by ehossain          #+#    #+#             */
-/*   Updated: 2024/11/28 10:08:01 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/28 14:06:15 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-unsigned int	ft_number_size(long int nb)
+unsigned int	ft_number_size_printf(long int nb)
 {
 	int	i;
 

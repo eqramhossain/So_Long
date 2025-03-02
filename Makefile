@@ -6,11 +6,11 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/17 12:34:44 by ehossain          #+#    #+#              #
-#    Updated: 2025/02/28 09:41:40 by ehossain         ###   ########.fr        #
+#    Updated: 2025/02/28 13:43:29 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SOURCE = $(shell find ./so_long_mandatory -name "*.c")
+SOURCE = $(shell find ./sources -name "*.c")
 OBJ = $(SOURCE:.c=.o)
 LIBFT = ./libft/libft.a
 NAME = so_long
@@ -64,30 +64,30 @@ re: fclean all
 
 norm:
 	norminette libft 
-	norminette so_long_mandatory
+	norminette sources
 
 leack:
-	valgrind ./so_long ./so_long_maps/small_map.ber
+	valgrind ./so_long ./valid_maps/small_map.ber
 
 funcheck:
-	funcheck ./so_long ./so_long_maps/small_map.ber
+	funcheck ./so_long ./valid_maps/small_map.ber
 
 .PHONY: clean fclean re all norm leack funcheck
 
-Black='\e[0;30m'
-Gray='\e[0;37m'
-D_Gray='\e[1;30m'
-Red='\e[0;31m'
-L_Red='\e[1;31m'
-Green='\e[0;32m'
-L_Green='\e[1;32m'
-Orange='\e[0;33m'
-Yellow='\e[1;33m'
-Blue='\e[0;34m'
-L_Blue='\e[1;34m'
-Purple='\e[0;35m'
-L_Purple='\e[1;35m'
-Cyan='\e[0;36m'
-L_Cyan='\e[1;36m'
-White='\e[1;37m'
-NC='\e[0m'
+# Black='\e[0;30m'
+# Gray='\e[0;37m'
+# D_Gray='\e[1;30m'
+# Red='\e[0;31m'
+# L_Red='\e[1;31m'
+# Green='\e[0;32m'
+# L_Green='\e[1;32m'
+# Orange='\e[0;33m'
+# Yellow='\e[1;33m'
+# Blue='\e[0;34m'
+# L_Blue='\e[1;34m'
+# Purple='\e[0;35m'
+# L_Purple='\e[1;35m'
+# Cyan='\e[0;36m'
+# L_Cyan='\e[1;36m'
+# White='\e[1;37m'
+# NC='\e[0m'

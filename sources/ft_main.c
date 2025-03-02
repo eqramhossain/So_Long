@@ -1,40 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structure.h                                        :+:      :+:    :+:   */
+/*   ft_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/19 14:29:37 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/26 20:27:31 by ehossain         ###   ########.fr       */
+/*   Created: 2025/02/17 12:28:55 by ehossain          #+#    #+#             */
+/*   Updated: 2025/03/02 10:22:00 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTURE_H
-# define STRUCTURE_H
+#include "so_long.h"
 
-typedef struct s_map
+int	main(int ac, char *av[])
 {
-	int	i;
-	int	empty_space;
-	int	wall;
-	int	collectible;
-	int	exit;
-	int	player;
-}		t_map;
+	t_map	map;
 
-typedef struct s_line_length
-{
-	int	i;
-	int	current;
-	int	first;
-
-}		t_line_length;
-
-typedef struct s_position
-{
-	int	x;
-	int	y;
-}		t_position;
-
-#endif
+	map.ac = ac;
+	map.av = av;
+	ft_arguments_check(&map);
+	return (0);
+}

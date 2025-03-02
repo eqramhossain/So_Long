@@ -6,7 +6,7 @@
 /*   By: ehossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:48:31 by ehossain          #+#    #+#             */
-/*   Updated: 2024/11/28 10:12:26 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/28 14:08:41 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_putuns(unsigned int nb)
 {
 	int	count;
 
-	count = ft_number_size((long int)nb);
+	count = ft_number_size_printf((long int)nb);
 	if (nb == 4294967295)
 	{
 		return (write(1, "4294967295", 10));

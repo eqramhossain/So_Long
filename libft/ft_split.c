@@ -6,7 +6,7 @@
 /*   By: ehossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:17:48 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/25 21:17:12 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/28 14:05:04 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ static char	*ft_stralloc(char *str, char c, int *k);
 
 // int	main(void)
 // {
-// 	char	str[] = "This/is/a/test/";
+// 	char	str[] = "This\n is\n a\n test\n ";
 // 	char	c;
 // 	char	**ptr_split;
 //
-// 	c = '/';
+// 	c = '\n';
 // 	ptr_split = ft_split(str, c);
 // 	if (!ptr_split)
 // 		return (0);
 // 	for (int i = 0; i < 5; i++)
 // 	{
-// 		printf("the ptr_split[%d] = %s\n", i, ptr_split[i]);
+// 		printf("the ptr_split[%d] = %s", i, ptr_split[i]);
 // 	}
 // 	printf("counted word in str = %d\n", ft_countword(str, c));
 // 	ft_freeup(ptr_split);

@@ -6,7 +6,7 @@
 /*   By: ehossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:45:27 by ehossain          #+#    #+#             */
-/*   Updated: 2024/11/28 10:15:46 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/02/28 14:08:05 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_putdec(int nb)
 {
 	int	count;
 
-	count = ft_number_size(nb);
+	count = ft_number_size_printf(nb);
 	if (nb == -2147483648)
 	{
 		write(1, "-2147483648", 11);
