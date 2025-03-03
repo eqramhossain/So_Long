@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 10:01:48 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/02 12:02:36 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/02 15:46:43 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_arguments_check(t_map *map)
 {
+	map->file_name = map->av[1];
 	if (map->ac == 1)
 	{
 		ft_error("Please provide a file");
@@ -24,24 +25,28 @@ void	ft_arguments_check(t_map *map)
 		ft_error("Multiple files");
 		exit(EXIT_FAILURE);
 	}
-	map->file_name = map->av[1];
-	if (ft_is_file_ok(map) == 1)
+	else if (ft_is_file_ok(map) == 1)
 		exit(EXIT_FAILURE);
-	if (ft_read_map(map) == 1)
+	else if (ft_read_map(map) == 1)
 	{
 		ft_error("ft_read_map failed. Good Luck!");
 		exit(EXIT_FAILURE);
 	}
-	if (ft_is_map_rectangular(map->full_map) == 1)
+	else if (ft_is_map_rectangular(map->full_map) == 1)
 		exit(EXIT_FAILURE);
-	ft_is_map_closed(map->full_map);
-	ft_is_all_character_present(map);
+	else if (ft_is_map_closed(map->full_map) == 1)
+		exit(EXIT_FAILURE);
+	else if (ft_is_all_character_present(map) == 1)
+		exit(EXIT_FAILURE);
 	ft_flood_fill(map->full_map);
+	if (ft_validpath_check(map->full_map, map->copy_map) == 0)
+		printf("This map have a valid path\n");
+	else if (ft_validpath_check(map->full_map, map->copy_map) == 1)
+		printf("This map have a valid path\n");
 	for (int i = 0; map->full_map[i]; i++)
 		printf("full_map[i] = %s\n", map->full_map[i]);
 	for (int i = 0; map->copy_map[i]; i++)
 		printf("full_map[i] = %s\n", map->copy_map[i]);
-	ft_validpath_check(map->full_map, map->copy_map);
 }
 
 int	ft_is_file_ok(t_map *map)
@@ -203,10 +208,13 @@ int	ft_is_all_character_present(t_map *map)
 				map->players++;
 			if (full_map[row][column] == 'C')
 				map->collects++;
-			else if (full_map[row][column] != '1'
-				&& full_map[row][column] != '0' && full_map[row][column] != 'E'
-				&& full_map[row][column] != 'P' && full_map[row][column] != 'C')
+			if (full_map[row][column] != '1' && full_map[row][column] != '0'
+				&& full_map[row][column] != 'E' && full_map[row][column] != 'P'
+				&& full_map[row][column] != 'C' && full_map[row][column] != '\0'
+				&& full_map[row][column] != '\n')
+			{
 				return (ft_error("There is a unknown charecter found"), 1);
+			}
 			column++;
 		}
 		row++;
@@ -244,14 +252,14 @@ int	ft_flood_fill(char **full_map)
 	return (0);
 }
 
-int	ft_flood_fill_verif(char **map, t_position player_pos, t_count count)
+void	ft_flood_fill_verif(char **map, t_position player_pos, t_count count)
 {
 	if (player_pos.x < 0 || player_pos.x >= count.i || player_pos.y < 0
 		|| player_pos.y >= count.j || ((map[player_pos.x][player_pos.y] != '0')
 			&& (map[player_pos.x][player_pos.y] != 'C')
 			&& (map[player_pos.x][player_pos.y] != 'E')
 			&& (map[player_pos.x][player_pos.y] != 'P')))
-		return (1);
+		return ;
 	map[player_pos.x][player_pos.y] = 'F';
 	ft_flood_fill_verif(map, (t_position){player_pos.x + 1, player_pos.y},
 		count);
@@ -261,10 +269,9 @@ int	ft_flood_fill_verif(char **map, t_position player_pos, t_count count)
 		count);
 	ft_flood_fill_verif(map, (t_position){player_pos.x, player_pos.y - 1},
 		count);
-	return (0);
 }
 
-void	ft_validpath_check(char **new_map, char **old_map)
+int	ft_validpath_check(char **new_map, char **old_map)
 {
 	int	i;
 	int	j;
@@ -278,14 +285,11 @@ void	ft_validpath_check(char **new_map, char **old_map)
 			if (old_map[i][j] == 'C' || old_map[i][j] == 'E')
 			{
 				if (new_map[i][j] != 'F')
-				{
-					ft_error("This map does not have any valid path");
-					exit(EXIT_FAILURE);
-				}
+					return (1);
 			}
 			j++;
 		}
 		i++;
 	}
-	printf("This map have a valid path\n");
+	return (0);
 }
