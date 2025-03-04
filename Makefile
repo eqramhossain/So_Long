@@ -6,7 +6,7 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/17 12:34:44 by ehossain          #+#    #+#              #
-#    Updated: 2025/02/28 13:43:29 by ehossain         ###   ########.fr        #
+#    Updated: 2025/03/03 11:55:18 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ MAKE = make --no-print-directory
 # TEST= $(shell find so_long)
 
 all: $(NAME)
-	@echo "so_long compiled"
 
 # @if [ "$(TEST)" = "$(NAME)" ]; then \
 # 	echo "hello world"; \
@@ -28,23 +27,23 @@ all: $(NAME)
 
 
 # -------------------------- FOR LINUX ------------------------------
-#
-# $(NAME): $(OBJ) $(LIBFT)
-# 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -Lminilibx -lmlx -lXext -lX11 -lm -lz -o $(NAME)
-#
-# %.o: %.c
-# 	@$(CC) $(CFLAGS) -Ilibft -Iso_long_mandatory -Iminilibx -O3 -c $< -o $@ 
-#
+
+$(NAME): $(OBJ) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -Lminilibx -lmlx -lXext -lX11 -lm -lz -o $(NAME)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -Ilibft -Isources -Iminilibx -O3 -c $< -o $@ 
+
 # -------------------------- FOR LINUX ------------------------------
 
 # -------------------------- FOR MACOS ------------------------------
-
-$(NAME): $(OBJ) $(LIBFT)
-	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -Lminilibx_mac -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-
-%.o: %.c
-	@$(CC) $(CFLAGS) -Ilibft -Iminilibx_mac -c $< -o $@
-
+#
+# $(NAME): $(OBJ) $(LIBFT)
+# 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -Lminilibx_mac -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+#
+# %.o: %.c
+# 	@$(CC) $(CFLAGS) -Ilibft -Iminilibx_mac -c $< -o $@
+#
 # -------------------------- FOR MACOS ------------------------------
 
 $(LIBFT):

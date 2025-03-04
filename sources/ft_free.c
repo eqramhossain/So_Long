@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_inisialize_struct.c                             :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/02 10:27:41 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/02 14:03:32 by ehossain         ###   ########.fr       */
+/*   Created: 2025/02/22 19:31:36 by ehossain          #+#    #+#             */
+/*   Updated: 2025/03/03 15:26:49 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_inisialize_t_map(t_map *map)
+void	ft_freeup(char **str)
 {
-	map->walls = 0;
-	map->empty_spaces = 0;
-	map->exits = 0;
-	map->players = 0;
-	map->collects = 0;
+	int	i;
+
+	i = 0;
+	if (!str)
+		return ;
+	while (str[i] != NULL)
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
 }
