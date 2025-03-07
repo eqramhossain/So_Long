@@ -1,40 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/22 19:31:36 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/06 15:55:33 by ehossain         ###   ########.fr       */
+/*   Created: 2025/03/05 00:02:55 by ehossain          #+#    #+#             */
+/*   Updated: 2025/03/06 14:25:19 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_freeup(char **str)
+void	ft_error_exit(char *str)
 {
-	int	i;
-
-	i = 0;
-	if (!str)
-		return ;
-	while (str[i] != NULL)
-	{
-		free(str[i]);
-		i++;
-	}
-}
-
-void	ft_free_exit(t_map *map)
-{
-	if (map->next_line)
-		free(map->next_line);
-	if (map->tmp_map)
-		free(map->tmp_map);
-	if (map->full_map)
-		free(map->full_map);
-	if (map->copy_map)
-		free(map->copy_map);
+	ft_putstr_fd("\e[31m❌ERROR❌:\n", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("\e[0m\n", 2);
 	exit(EXIT_FAILURE);
 }

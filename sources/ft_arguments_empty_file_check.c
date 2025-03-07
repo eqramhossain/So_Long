@@ -6,22 +6,22 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 10:01:48 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/03 14:29:01 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/05 00:20:52 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_arguments_check(int ac, char **av)
+void	ft_arguments_check(t_map *map)
 {
 	int	len_file_name;
 
-	if (ac == 1)
+	if (map->ac == 1)
 		ft_error_exit("Please provide a file");
-	else if (ac > 2)
+	else if (map->ac > 2)
 		ft_error_exit("Multiple files");
-	len_file_name = ft_strlen(av[1]);
-	if (!ft_strnstr(av[1], ".ber", len_file_name))
+	len_file_name = ft_strlen(map->filename);
+	if (!ft_strnstr(map->filename, ".ber", len_file_name))
 		ft_error_exit("Worng file format (expected file format example.ber)");
 }
 

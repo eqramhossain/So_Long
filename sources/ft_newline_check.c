@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_newline_check.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/22 19:31:36 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/06 15:55:33 by ehossain         ###   ########.fr       */
+/*   Created: 2025/03/05 10:55:01 by ehossain          #+#    #+#             */
+/*   Updated: 2025/03/06 15:54:58 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_freeup(char **str)
+void	ft_newline_check(char *map)
 {
 	int	i;
 
 	i = 0;
-	if (!str)
-		return ;
-	while (str[i] != NULL)
+	if (map[0] == '\n')
 	{
-		free(str[i]);
-		i++;
+		free(map);
+		ft_error_exit("There is a newline at start of the file.");
 	}
-}
-
-void	ft_free_exit(t_map *map)
-{
-	if (map->next_line)
-		free(map->next_line);
-	if (map->tmp_map)
-		free(map->tmp_map);
-	if (map->full_map)
-		free(map->full_map);
-	if (map->copy_map)
-		free(map->copy_map);
-	exit(EXIT_FAILURE);
+	else
+	{
+		while (map[i])
+		{
+			if (map[i] == '\n' && map[i + 1] == '\n')
+			{
+				free(map);
+				ft_error_exit("There is a newline in the file.");
+			}
+			i++;
+		}
+	}
 }

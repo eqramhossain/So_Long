@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:26:25 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/04 23:59:47 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/07 15:42:47 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,54 +15,62 @@
 
 # include "libft.h"
 # include "mlx.h"
-# include "so_long_struct.h"
 
-typedef struct t_player
+typedef struct s_row_column
+{
+	int			row;
+	int			column;
+}				t_row_column;
+
+typedef struct s_player
 {
 	int			x;
 	int			y;
 }				t_player;
 
+typedef struct s_img
+{
+}				t_img;
+
 typedef struct s_map
 {
+	int			ac;
 	int			fd;
 	int			empty_spaces;
 	int			walls;
-	int			collect;
-	int			collect_check;
+	int			collects;
 	int			exits;
-	int			exit_check;
-	int			player_check;
+	int			player;
 	t_player	player_pos;
 	int			row;
 	int			column;
-	char		*line;
+	char		*next_line;
 	char		*tmp_map;
 	char		*filename;
 	char		**full_map;
 	char		**copy_map;
+	void		*mlx_ptr;
+	void		*mlx_window;
 }				t_map;
 
 /* function that check if the map file and the map is valid */
-void			ft_inisialize_t_map(t_map *map);
-void			ft_arguments_check(int ac, char **av);
+void			ft_inisialize_t_map(t_map *map, char **av, int ac);
+void			ft_arguments_check(t_map *map);
 void			ft_file_not_empty(char *file);
-void			ft_read_map(char *file, t_map *map);
-
-// void   ft_is_map_rectangular(void);
-// void	ft_is_map_closed(void);
-// void	ft_is_closed_top_bottom(void);
-// void	ft_is_closed_left_right(void);
-// void	ft_is_all_character_present(void);
-// void	ft_flood_fill(char **map);
-// void	ft_flood_fill_verif(char **map, t_player player_pos,
-//		t_count count);
+void			ft_map_init(t_map *map);
+void			ft_read_map(t_map *map);
+void			ft_newline_check(char *map);
+void			ft_is_map_rectangular(t_map *map);
+void			ft_is_closed_top_bottom(t_map *map);
+void			ft_is_closed_left_right(t_map *map);
+void			ft_is_all_character_present(t_map *map);
+void			ft_flood_fill_verif(t_map *map);
 
 /* function that print error in stderr output*/
-void			ft_error(char *str);
 void			ft_error_exit(char *str);
 
 /* these functions frees allocated memomy */
 void			ft_freeup(char **str);
+void			ft_free_exit(t_map *map);
 
 #endif
