@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:26:25 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/07 15:42:47 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/08 12:45:20 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 
 # include "libft.h"
 # include "mlx.h"
+
+# define WALL "../images/so_long_ekram/WALL.xpm"
+# define EMPTY "../images/so_long_ekram/empty.xpm"
+# define COLLECT "../images/so_long_ekram/collect.xpm"
+# define MAIN "../images/so_long_ekram/main.xpm"
+# define DOOR_OPEN "../images/so_long_ekram/door_open.xpm"
+# define DOOR_CLOSE "../images/so_long_ekram/door_close.xpm"
+# define WIN_NAME "so_long"
+# define IMG_SIZE 50
 
 typedef struct s_row_column
 {
@@ -30,6 +39,7 @@ typedef struct s_player
 
 typedef struct s_img
 {
+	void		*wall;
 }				t_img;
 
 typedef struct s_map
@@ -51,6 +61,7 @@ typedef struct s_map
 	char		**copy_map;
 	void		*mlx_ptr;
 	void		*mlx_window;
+	t_img		img;
 }				t_map;
 
 /* function that check if the map file and the map is valid */

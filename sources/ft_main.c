@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:28:55 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/07 15:44:57 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/08 12:52:41 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,21 @@ void	ft_inisialize_t_map(t_map *map, char **av, int ac);
 int	main(int ac, char *av[])
 {
 	t_map	map;
+	int		a;
+	int		b;
 
+	a = 5;
+	b = 5;
 	ft_inisialize_t_map(&map, av, ac);
 	ft_arguments_check(&map);
 	ft_file_not_empty(map.filename);
 	ft_map_init(&map);
 	map.mlx_ptr = mlx_init();
-	map.mlx_window = mlx_new_window(map.mlx_ptr, 1920, 1080, "so_long");
+	map.mlx_window = mlx_new_window(map.mlx_ptr, map.column * IMG_SIZE, map.row
+			* IMG_SIZE, WIN_NAME);
+	map.img.wall = mlx_xpm_file_to_image(map.mlx_ptr, WALL, &a, &b);
+	mlx_put_image_to_window(map.mlx_ptr, map.mlx_window, map.img.wall, map.row
+		- 3, map.column - 5);
 	mlx_loop(map.mlx_ptr);
 	return (0);
 }
