@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:26:25 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/08 12:45:20 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/09 11:02:02 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,12 @@
 # include "libft.h"
 # include "mlx.h"
 
-# define WALL "../images/so_long_ekram/WALL.xpm"
-# define EMPTY "../images/so_long_ekram/empty.xpm"
-# define COLLECT "../images/so_long_ekram/collect.xpm"
-# define MAIN "../images/so_long_ekram/main.xpm"
-# define DOOR_OPEN "../images/so_long_ekram/door_open.xpm"
-# define DOOR_CLOSE "../images/so_long_ekram/door_close.xpm"
-# define WIN_NAME "so_long"
-# define IMG_SIZE 50
+# define WALL "images/so_long_ekram/WALL.xpm"
+# define EMPTY "images/so_long_ekram/empty.xpm"
+# define COLLECT "images/so_long_ekram/collect.xpm"
+# define MAIN "images/so_long_ekram/main.xpm"
+# define DOOR_OPEN "images/so_long_ekram/door_open.xpm"
+# define DOOR_CLOSE "images/so_long_ekram/door_close.xpm"
 
 typedef struct s_row_column
 {
@@ -39,7 +37,12 @@ typedef struct s_player
 
 typedef struct s_img
 {
-	void		*wall;
+	void		*wall_img;
+	void		*empty_img;
+	void		*collect_img;
+	void		*main_img;
+	void		*door_close_img;
+	void		*door_open_img;
 }				t_img;
 
 typedef struct s_map
@@ -60,15 +63,12 @@ typedef struct s_map
 	char		**full_map;
 	char		**copy_map;
 	void		*mlx_ptr;
-	void		*mlx_window;
-	t_img		img;
+	void		*win_ptr;
 }				t_map;
 
 /* function that check if the map file and the map is valid */
-void			ft_inisialize_t_map(t_map *map, char **av, int ac);
 void			ft_arguments_check(t_map *map);
 void			ft_file_not_empty(char *file);
-void			ft_map_init(t_map *map);
 void			ft_read_map(t_map *map);
 void			ft_newline_check(char *map);
 void			ft_is_map_rectangular(t_map *map);
@@ -76,6 +76,9 @@ void			ft_is_closed_top_bottom(t_map *map);
 void			ft_is_closed_left_right(t_map *map);
 void			ft_is_all_character_present(t_map *map);
 void			ft_flood_fill_verif(t_map *map);
+
+/* these functions help visualise the game using minilibx */
+void			ft_xpm_to_image(void *mlx_ptr, t_img *img);
 
 /* function that print error in stderr output*/
 void			ft_error_exit(char *str);
