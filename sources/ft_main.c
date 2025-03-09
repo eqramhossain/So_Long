@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:28:55 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/09 12:26:38 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/09 14:40:52 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,14 @@ int	main(int ac, char *av[])
 	map.mlx_ptr = mlx_init();
 	map.win_ptr = mlx_new_window(map.mlx_ptr, 1980, 1020, "so_long");
 	ft_xpm_to_image(map.mlx_ptr, &img);
-	mlx_put_image_to_window(map.mlx_ptr, map.win_ptr, img.door_close_img, 5, 5);
+	mlx_put_image_to_window(map.mlx_ptr, map.win_ptr, img.wall_img, 0, 0);
+	mlx_put_image_to_window(map.mlx_ptr, map.win_ptr, img.empty_img, 0, 50);
+	mlx_put_image_to_window(map.mlx_ptr, map.win_ptr, img.main_img, 0, 100);
+	mlx_put_image_to_window(map.mlx_ptr, map.win_ptr, img.collect_img, 0, 150);
+	mlx_put_image_to_window(map.mlx_ptr, map.win_ptr, img.door_open_img, 0,
+		200);
+	mlx_put_image_to_window(map.mlx_ptr, map.win_ptr, img.door_close_img, 0,
+		250);
 	mlx_loop(map.mlx_ptr);
 	return (0);
 }

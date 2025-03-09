@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:26:25 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/09 12:26:00 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/09 14:32:06 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 # include "libft.h"
 # include "mlx.h"
 
-# define WALL "images/so_long_ekram/WALL.xpm"
+# define WALL "images/so_long_ekram/wall.xpm"
 # define EMPTY "images/so_long_ekram/empty.xpm"
 # define COLLECT "images/so_long_ekram/collect.xpm"
 # define MAIN "images/so_long_ekram/main.xpm"
-# define DOOR_OPEN "images/so_long_ekram/test.xpm"
-# define DOOR_CLOSE "images/so_long_ekram/test2.xpm"
+# define DOOR_OPEN "images/so_long_ekram/door_open.xpm"
+# define DOOR_CLOSE "images/so_long_ekram/door_close.xpm"
 
 typedef struct s_row_column
 {
