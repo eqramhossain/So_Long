@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:26:25 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/09 11:02:02 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/09 12:08:27 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # define EMPTY "images/so_long_ekram/empty.xpm"
 # define COLLECT "images/so_long_ekram/collect.xpm"
 # define MAIN "images/so_long_ekram/main.xpm"
-# define DOOR_OPEN "images/so_long_ekram/door_open.xpm"
-# define DOOR_CLOSE "images/so_long_ekram/door_close.xpm"
+# define DOOR_OPEN "images/so_long_ekram/test.xpm"
+# define DOOR_CLOSE "images/so_long_ekram/test1.xpm"
 
 typedef struct s_row_column
 {

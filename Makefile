@@ -6,7 +6,7 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/17 12:34:44 by ehossain          #+#    #+#              #
-#    Updated: 2025/03/08 12:54:48 by ehossain         ###   ########.fr        #
+#    Updated: 2025/03/09 11:53:46 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,22 +27,22 @@ all: $(NAME)
 
 
 # -------------------------- FOR LINUX ------------------------------
-
-$(NAME): $(OBJ) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -Lminilibx -lmlx -lXext -lX11 -lm -lz -o $(NAME)
-
-%.o: %.c
-	$(CC) $(CFLAGS) -Ilibft -Isources -Iminilibx -O3 -c $< -o $@ 
-
+#
+# $(NAME): $(OBJ) $(LIBFT)
+# 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -Lminilibx -lmlx -lXext -lX11 -lm -lz -o $(NAME)
+#
+# %.o: %.c
+# 	$(CC) $(CFLAGS) -Ilibft -Isources -Iminilibx -O3 -c $< -o $@ 
+#
 # -------------------------- FOR LINUX ------------------------------
 
 # -------------------------- FOR MACOS ------------------------------
 #
-# $(NAME): $(OBJ) $(LIBFT)
-# 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -Lminilibx_mac -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-#
-# %.o: %.c
-# 	@$(CC) $(CFLAGS) -Ilibft -Isources -Iminilibx_mac -c $< -o $@
+$(NAME): $(OBJ) $(LIBFT)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -Lminilibx_mac -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+
+%.o: %.c
+	@$(CC) $(CFLAGS) -Ilibft -Isources -Iminilibx_mac -c $< -o $@
 #
 # -------------------------- FOR MACOS ------------------------------
 
