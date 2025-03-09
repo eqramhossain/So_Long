@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:26:25 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/09 14:32:06 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/09 15:48:29 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct s_map
 	char		**copy_map;
 	void		*mlx_ptr;
 	void		*win_ptr;
+	t_img		img;
 }				t_map;
 
 /* function that check if the map file and the map is valid */
@@ -78,7 +79,8 @@ void			ft_is_all_character_present(t_map *map);
 void			ft_flood_fill_verif(t_map *map);
 
 /* these functions help visualise the game using minilibx */
-void			ft_xpm_to_image(void *mlx_ptr, t_img *img);
+void			ft_xpm_to_image(t_map *map);
+void			ft_print_elements_to_window(t_map *map);
 
 /* function that print error in stderr output*/
 void			ft_error_exit(char *str);

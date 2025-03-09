@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:28:55 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/09 14:40:52 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/09 15:47:59 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static void	ft_map_init(t_map *map);
 int	main(int ac, char *av[])
 {
 	t_map	map;
-	t_img	img;
 
 	ft_inisialize_t_map(&map, av, ac);
 	ft_arguments_check(&map);
@@ -26,19 +25,19 @@ int	main(int ac, char *av[])
 	ft_map_init(&map);
 	map.mlx_ptr = mlx_init();
 	map.win_ptr = mlx_new_window(map.mlx_ptr, 1980, 1020, "so_long");
-	ft_xpm_to_image(map.mlx_ptr, &img);
-	mlx_put_image_to_window(map.mlx_ptr, map.win_ptr, img.wall_img, 0, 0);
-	mlx_put_image_to_window(map.mlx_ptr, map.win_ptr, img.empty_img, 0, 50);
-	mlx_put_image_to_window(map.mlx_ptr, map.win_ptr, img.main_img, 0, 100);
-	mlx_put_image_to_window(map.mlx_ptr, map.win_ptr, img.collect_img, 0, 150);
-	mlx_put_image_to_window(map.mlx_ptr, map.win_ptr, img.door_open_img, 0,
-		200);
-	mlx_put_image_to_window(map.mlx_ptr, map.win_ptr, img.door_close_img, 0,
-		250);
+	ft_xpm_to_image(&map);
+	ft_print_elements_to_window(&map);
 	mlx_loop(map.mlx_ptr);
 	return (0);
 }
-
+// mlx_put_image_to_window(map.mlx_ptr, map.win_ptr, img.wall_img, 0, 0);
+// mlx_put_image_to_window(map.mlx_ptr, map.win_ptr, img.empty_img, 0, 50);
+// mlx_put_image_to_window(map.mlx_ptr, map.win_ptr, img.main_img, 0, 100);
+// mlx_put_image_to_window(map.mlx_ptr, map.win_ptr, img.collect_img, 0, 150);
+// mlx_put_image_to_window(map.mlx_ptr, map.win_ptr, img.door_open_img, 0,
+// 	200);
+// mlx_put_image_to_window(map.mlx_ptr, map.win_ptr, img.door_close_img, 0,
+// 	250);
 static void	ft_inisialize_t_map(t_map *map, char **av, int ac)
 {
 	map->fd = 0;
