@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 14:55:35 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/06 14:34:35 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/10 10:19:25 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ void	ft_is_map_rectangular(t_map *map)
 	{
 		map->column = 0;
 		while (map->full_map[map->row][map->column])
-		{
 			map->column++;
-		}
 		if (first_line != map->column)
 			ft_error_rectangular(map);
 		map->row++;
