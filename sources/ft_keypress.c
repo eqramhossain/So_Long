@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 11:21:45 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/18 11:57:32 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/19 11:30:30 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ int	ft_on_destroy(t_map *map)
 
 int	ft_on_keypress(int keycode, t_map *map)
 {
-	for (int i = 0; map->copy_map[i]; i++)
-		printf("%s\n", map->copy_map[i]);
 	ft_scan_player(map);
 	if (keycode == ESC)
 		ft_on_destroy(map);

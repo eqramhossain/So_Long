@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 15:48:57 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/09 16:23:54 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:20:16 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,18 @@ void	ft_print_elements_to_window(t_map *map)
 		tab.column = 0;
 		while (map->copy_map[tab.row][tab.column])
 		{
-			if (map->copy_map[tab.row][tab.column] == 'P')
+			if (map->copy_map[tab.row][tab.column] == PLAYER)
 				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr,
-					map->img.main_img, tab.column * 64, tab.row * 64);
-			else if (map->copy_map[tab.row][tab.column] == 'E')
+					map->img.main_img, tab.column * TILE_SIZE, tab.row
+					* TILE_SIZE);
+			else if (map->copy_map[tab.row][tab.column] == EXIT)
 				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr,
-					map->img.door_close_img, tab.column * 64, tab.row * 64);
-			else if (map->copy_map[tab.row][tab.column] == 'C')
+					map->img.door_close_img, tab.column * TILE_SIZE, tab.row
+					* TILE_SIZE);
+			else if (map->copy_map[tab.row][tab.column] == COLLECT)
 				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr,
-					map->img.collect_img, tab.column * 64, tab.row * 64);
+					map->img.collect_img, tab.column * TILE_SIZE, tab.row
+					* TILE_SIZE);
 			tab.column++;
 		}
 		tab.row++;
@@ -50,15 +53,40 @@ static void	ft_print_wall_empty(t_map *map)
 		tab.column = 0;
 		while (map->copy_map[tab.row][tab.column])
 		{
-			if (map->copy_map[tab.row][tab.column] == '1')
+			if (map->copy_map[tab.row][tab.column] == WALL)
 			{
 				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr,
-					map->img.wall_img, tab.column * 64, tab.row * 64);
+					map->img.wall_img, tab.column * TILE_SIZE, tab.row
+					* TILE_SIZE);
 			}
-			else if (map->copy_map[tab.row][tab.column] == '0')
+			else if (map->copy_map[tab.row][tab.column] == FLOOR)
 			{
 				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr,
-					map->img.empty_img, tab.column * 64, tab.row * 64);
+					map->img.empty_img, tab.column * TILE_SIZE, tab.row
+					* TILE_SIZE);
+			}
+			tab.column++;
+		}
+		tab.row++;
+	}
+}
+
+void	ft_print_exit_player(t_map *map)
+{
+	t_row_column	tab;
+
+	ft_inisialize(&tab.row, &tab.column);
+	while (map->copy_map[tab.row])
+	{
+		tab.column = 0;
+		while (map->copy_map[tab.row][tab.column])
+		{
+			if (map->copy_map[tab.row][tab.column] == EXIT)
+			{
+				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr,
+					map->img.door_close_img_player, tab.column * TILE_SIZE,
+					tab.row * TILE_SIZE);
+				return ;
 			}
 			tab.column++;
 		}
