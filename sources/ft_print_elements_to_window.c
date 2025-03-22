@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 15:48:57 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/20 15:20:16 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/20 18:25:31 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,22 +71,29 @@ static void	ft_print_wall_empty(t_map *map)
 	}
 }
 
-void	ft_print_exit_player(t_map *map)
+void	ft_redraw_map(t_map *map)
 {
 	t_row_column	tab;
 
+	ft_print_wall_empty(map);
+	ft_print_elements_to_window(map);
 	ft_inisialize(&tab.row, &tab.column);
 	while (map->copy_map[tab.row])
 	{
 		tab.column = 0;
 		while (map->copy_map[tab.row][tab.column])
 		{
-			if (map->copy_map[tab.row][tab.column] == EXIT)
+			if (map->copy_map[tab.row][tab.column] == EXIT_CLOSE_PLAYER)
 			{
 				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr,
-					map->img.door_close_img_player, tab.column * TILE_SIZE,
+					map->img.door_close_player_img, tab.column * TILE_SIZE,
 					tab.row * TILE_SIZE);
-				return ;
+			}
+			else if (map->copy_map[tab.row][tab.column] == EXIT_OPEN)
+			{
+				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr,
+					map->img.door_open_img, tab.column * TILE_SIZE, tab.row
+					* TILE_SIZE);
 			}
 			tab.column++;
 		}

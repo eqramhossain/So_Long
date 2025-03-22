@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 11:21:45 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/19 11:30:30 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/22 12:38:15 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	ft_on_keypress(int keycode, t_map *map)
 		ft_move_left(map);
 	else if (keycode == RIGHT)
 		ft_move_right(map);
+	if (map->collects == 0)
+		ft_exit_open(map);
 	return (0);
 }
 
@@ -52,7 +54,8 @@ static void	ft_scan_player(t_map *map)
 		map->player_pos.y = 0;
 		while (map->player_pos.y < map->column)
 		{
-			if (map->copy_map[map->player_pos.x][map->player_pos.y] == 'P')
+			if (map->copy_map[map->player_pos.x][map->player_pos.y] == 'P'
+				|| map->copy_map[map->player_pos.x][map->player_pos.y] == 'S')
 				return ;
 			map->player_pos.y++;
 		}

@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:26:25 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/20 15:22:46 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/22 12:37:56 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define COLLECT 'C'
 # define PLAYER 'P'
 # define EXIT 'E'
+# define EXIT_OPEN 'O'
+# define EXIT_CLOSE_PLAYER 'S'
 
 # define TILE_SIZE 64
 
@@ -99,7 +101,8 @@ void			ft_move_right(t_map *map);
 /* these functions help visualise the game using minilibx */
 void			ft_xpm_to_image(t_map *map);
 void			ft_print_elements_to_window(t_map *map);
-void			ft_print_exit_player(t_map *map);
+void			ft_redraw_map(t_map *map);
+void			ft_exit_open(t_map *map);
 
 /* function that print error in stderr output*/
 void			ft_error_exit(char *str);
@@ -115,5 +118,8 @@ int				ft_on_destroy(t_map *map);
 void			ft_freeup(char **str);
 void			ft_free(t_map *map);
 void			ft_free_exit(t_map *map);
+
+/* YOU WON */
+void			ft_win(t_map *map);
 
 #endif
