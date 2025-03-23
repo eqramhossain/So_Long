@@ -6,15 +6,13 @@
 /*   By: ehossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 11:27:23 by ehossain          #+#    #+#             */
-/*   Updated: 2025/02/28 13:52:09 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/23 14:45:41 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include "./ft_printf/ft_printf.h"
-# include "./get_next_line/get_next_line.h"
 # include <ctype.h>
 # include <stdio.h>
 # include <stdlib.h>

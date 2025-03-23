@@ -6,7 +6,7 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/17 12:34:44 by ehossain          #+#    #+#              #
-#    Updated: 2025/03/10 09:31:46 by ehossain         ###   ########.fr        #
+#    Updated: 2025/03/23 16:47:43 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@ NAME = so_long
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g3
 MAKE = make --no-print-directory
-# TEST= $(shell find so_long)
 
 all: $(NAME)
 
@@ -65,11 +64,11 @@ norm:
 	norminette libft 
 	norminette sources
 
-leack:
-	valgrind ./so_long ./valid_maps/small_map.ber
-
-funcheck:
-	funcheck ./so_long ./valid_maps/small_map.ber
+# leack:
+# 	valgrind ./so_long ./valid_maps/small_map.ber
+#
+# funcheck:
+# 	funcheck ./so_long ./valid_maps/small_map.ber
 
 .PHONY: clean fclean re all norm leack funcheck
 
