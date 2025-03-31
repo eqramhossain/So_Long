@@ -6,12 +6,13 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/17 12:34:44 by ehossain          #+#    #+#              #
-#    Updated: 2025/03/23 16:47:43 by ehossain         ###   ########.fr        #
+#    Updated: 2025/03/31 10:20:51 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SOURCE = $(shell find ./sources -name "*.c")
 OBJ = $(SOURCE:.c=.o)
+LIBFT_LIB_PATH = ./libft/include
 LIBFT = ./libft/libft.a
 NAME = so_long
 CC = gcc
@@ -20,72 +21,51 @@ MAKE = make --no-print-directory
 
 all: $(NAME)
 
-# @if [ "$(TEST)" = "$(NAME)" ]; then \
-# 	echo "hello world"; \
-# fi
-
-
-# -------------------------- FOR LINUX ------------------------------
-#
 $(NAME): $(OBJ) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -Lminilibx -lmlx -lXext -lX11 -lm -lz -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -Lminilibx -lmlx -lXext -lX11 -lm -lz -o $(NAME)
+	@echo "$(GREEN)so_long complied$(END)"
 
 %.o: %.c
-	$(CC) $(CFLAGS) -Ilibft -Isources -Iminilibx -O3 -c $< -o $@ 
-#
-# -------------------------- FOR LINUX ------------------------------
-
-# -------------------------- FOR MACOS ------------------------------
-#
-# $(NAME): $(OBJ) $(LIBFT)
-# 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -Lminilibx_mac -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-#
-# %.o: %.c
-# 	$(CC) $(CFLAGS) -Ilibft -Isources -Iminilibx_mac -c $< -o $@
-#
-# -------------------------- FOR MACOS ------------------------------
+	@$(CC) $(CFLAGS) -I$(LIBFT_LIB_PATH) -Isources -Iminilibx -O3 -c $< -o $@ 
 
 $(LIBFT):
 	@$(MAKE) -C libft
+	@echo "$(GREEN)libft complied$(END)"
 
 clean: 
 	@rm -f $(OBJ)
 	@$(MAKE) clean -C libft
+	@echo "$(RED)so_long and libft object file removed$(END)"
 
 fclean: clean
 	@rm -f $(NAME)
-	@$(MAKE) fclean -C libft 
+	@$(MAKE) fclean -C libft
+	@echo "$(RED)so_long and libft.a removed$(END)"
 
 re: fclean all 
 	@$(MAKE) re -C libft 
-	@$(MAKE) all 
 
 norm:
 	norminette libft 
 	norminette sources
 
-# leack:
-# 	valgrind ./so_long ./valid_maps/small_map.ber
-#
-# funcheck:
-# 	funcheck ./so_long ./valid_maps/small_map.ber
+.PHONY: clean fclean re all norm
 
-.PHONY: clean fclean re all norm leack funcheck
-
-# Black='\e[0;30m'
-# Gray='\e[0;37m'
-# D_Gray='\e[1;30m'
-# Red='\e[0;31m'
-# L_Red='\e[1;31m'
-# Green='\e[0;32m'
-# L_Green='\e[1;32m'
-# Orange='\e[0;33m'
-# Yellow='\e[1;33m'
-# Blue='\e[0;34m'
-# L_Blue='\e[1;34m'
-# Purple='\e[0;35m'
-# L_Purple='\e[1;35m'
-# Cyan='\e[0;36m'
-# L_Cyan='\e[1;36m'
-# White='\e[1;37m'
-# NC='\e[0m'
+# Define color variables
+BLACK  = \033[0;30m
+GRAY   = \033[0;37m
+D_GRAY = \033[1;30m
+RED    = \033[0;31m
+L_RED  = \033[1;31m
+GREEN  = \033[0;32m
+L_GREEN= \033[1;32m
+ORANGE = \033[0;33m
+YELLOW = \033[1;33m
+BLUE   = \033[0;34m
+L_BLUE = \033[1;34m
+PURPLE = \033[0;35m
+L_PURPLE=\033[1;35m
+CYAN   = \033[0;36m
+L_CYAN = \033[1;36m
+WHITE  = \033[1;37m
+END     = \033[0m  # No Color (reset)
