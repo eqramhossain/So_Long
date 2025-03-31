@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:04:45 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/31 11:20:14 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/31 15:18:04 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void	ft_is_closed_top_bottom(t_map *map)
 	i = 0;
 	top_line = map->full_map[0];
 	bottom_line = map->full_map[map->row - 1];
-	while (top_line[i] && i < (map->column - 1))
+	while (top_line[i] && i < (map->column))
 	{
 		if (top_line[i] != '1')
 			ft_error_top(map);
 		i++;
 	}
 	i = 0;
-	while (bottom_line[i] && i < (map->column - 1))
+	while (bottom_line[i] && i < (map->column))
 	{
 		if (bottom_line[i] != '1')
 			ft_error_bottom(map);

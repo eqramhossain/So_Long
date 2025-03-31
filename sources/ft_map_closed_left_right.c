@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 14:26:56 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/07 01:26:30 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/31 15:18:55 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_is_closed_left_right(t_map *map)
 
 static void	ft_error_left_right(t_map *map)
 {
-	ft_putstr_fd("\e[31m❌ERROR❌:\n", 2);
+	ft_putstr_fd("\e[31mERROR:\n", 2);
 	ft_putstr_fd("The map isn't enclosed on the left/right.", 2);
 	ft_putstr_fd("\e[0m\n", 2);
 	if (map->full_map)

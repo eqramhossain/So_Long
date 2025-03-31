@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:04:11 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/20 15:22:59 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/31 16:13:35 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,6 @@ void	ft_xpm_to_image(t_map *map)
 			"images/so_long_ekram/door_close_player.xpm", &width, &height);
 	map->img.door_open_img = mlx_xpm_file_to_image(map->mlx_ptr,
 			"images/so_long_ekram/door_open.xpm", &width, &height);
+	map->img.door_open_player_img = mlx_xpm_file_to_image(map->mlx_ptr,
+			"images/so_long_ekram/door_open_player.xpm", &width, &height);
 }

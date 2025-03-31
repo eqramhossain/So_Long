@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:26:25 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/31 10:34:43 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/31 17:03:33 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define EXIT 'E'
 # define EXIT_OPEN 'O'
 # define EXIT_CLOSE_PLAYER 'S'
+# define EXIT_OPEN_PLAYER 'X'
 
 # define TILE_SIZE 64
 
@@ -53,6 +54,7 @@ typedef struct s_img
 	void		*door_close_img;
 	void		*door_close_player_img;
 	void		*door_open_img;
+	void		*door_open_player_img;
 }				t_img;
 
 typedef struct s_map
@@ -99,6 +101,7 @@ void			ft_move_right(t_map *map);
 /* these functions help visualise the game using minilibx */
 void			ft_xpm_to_image(t_map *map);
 void			ft_print_elements_to_window(t_map *map);
+void			ft_print_wall_empty(t_map *map);
 void			ft_redraw_map(t_map *map);
 void			ft_exit_open(t_map *map);
 
@@ -118,6 +121,6 @@ void			ft_free(t_map *map);
 void			ft_free_exit(t_map *map);
 
 /* YOU WON */
-void			ft_win(t_map *map);
+void			ft_win(t_map *map, t_row_column *new);
 
 #endif
