@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:04:56 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/10 10:33:33 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/31 12:09:26 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,26 @@ void	ft_is_all_character_present(t_map *map)
 			map);
 }
 
+static void	ft_count_character_helper(t_map *map, t_row_column *tab)
+{
+	if (map->full_map[tab->row][tab->column] == '1')
+		map->walls++;
+	else if (map->full_map[tab->row][tab->column] == '0')
+		map->empty_spaces++;
+	else if (map->full_map[tab->row][tab->column] == 'C')
+		map->collects++;
+	else if (map->full_map[tab->row][tab->column] == 'P')
+	{
+		map->player_pos.x = tab->row;
+		map->player_pos.y = tab->column;
+		map->player++;
+	}
+	else if (map->full_map[tab->row][tab->column] == 'E')
+		map->exits++;
+	else
+		map->other++;
+}
+
 static void	ft_count_character(t_map *map)
 {
 	t_row_column	tab;
@@ -44,22 +64,7 @@ static void	ft_count_character(t_map *map)
 		tab.column = 0;
 		while (map->full_map[tab.row][tab.column])
 		{
-			if (map->full_map[tab.row][tab.column] == '1')
-				map->walls++;
-			else if (map->full_map[tab.row][tab.column] == '0')
-				map->empty_spaces++;
-			else if (map->full_map[tab.row][tab.column] == 'C')
-				map->collects++;
-			else if (map->full_map[tab.row][tab.column] == 'P')
-			{
-				map->player_pos.x = tab.row;
-				map->player_pos.y = tab.column;
-				map->player++;
-			}
-			else if (map->full_map[tab.row][tab.column] == 'E')
-				map->exits++;
-			else
-				map->other++;
+			ft_count_character_helper(map, &tab);
 			tab.column++;
 		}
 		tab.row++;
@@ -68,7 +73,7 @@ static void	ft_count_character(t_map *map)
 
 static void	ft_error_all_character(char *str, t_map *map)
 {
-	ft_putstr_fd("\e[31m❌ERROR❌:\n", 2);
+	ft_putstr_fd("\e[31mERROR:\n", 2);
 	ft_putstr_fd(str, 2);
 	ft_putstr_fd("\e[0m\n", 2);
 	if (map->full_map)

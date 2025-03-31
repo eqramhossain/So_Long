@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:28:50 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/09 16:35:47 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/31 13:20:49 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@ void	ft_flood_fill_verif(t_map *map)
 static void	ft_flood_fill(char **map, t_player player_pos, int row, int column)
 {
 	if (player_pos.x < 0 || player_pos.x >= row || player_pos.y < 0
-		|| player_pos.y >= column || ((map[player_pos.x][player_pos.y] != '0')
-			&& (map[player_pos.x][player_pos.y] != 'C')
-			&& (map[player_pos.x][player_pos.y] != 'E')
-			&& (map[player_pos.x][player_pos.y] != 'P')))
+		|| player_pos.y >= column
+		|| ((map[player_pos.x][player_pos.y] != '0')
+		&& (map[player_pos.x][player_pos.y] != 'C')
+		&& (map[player_pos.x][player_pos.y] != 'E')
+		&& (map[player_pos.x][player_pos.y] != 'P')))
 		return ;
 	map[player_pos.x][player_pos.y] = 'F';
 	ft_flood_fill(map, (t_player){player_pos.x + 1, player_pos.y}, row, column);
@@ -61,7 +62,7 @@ static void	ft_validpath_check(char **new_map, char **old_map, t_map *map)
 
 static void	ft_error_valid_path(t_map *map)
 {
-	ft_putstr_fd("\e[31m❌ERROR❌:\n", 2);
+	ft_putstr_fd("\e[31ERROR:\n", 2);
 	ft_putstr_fd("Map does not have a valid path.", 2);
 	ft_putstr_fd("\e[0m\n", 2);
 	if (map->full_map)

@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 14:55:35 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/10 10:19:25 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/31 11:18:52 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_is_map_rectangular(t_map *map)
 
 static void	ft_error_rectangular(t_map *map)
 {
-	ft_putstr_fd("\e[31m❌ERROR❌:\n", 2);
+	ft_putstr_fd("\e[31mERROR:\n", 2);
 	ft_putstr_fd("The map is not rectangular.", 2);
 	ft_putstr_fd("\e[0m\n", 2);
 	if (map->full_map)
@@ -47,8 +47,8 @@ static void	ft_error_rectangular(t_map *map)
 
 static void	ft_error_minimum(t_map *map)
 {
-	ft_putstr_fd("\e[31m❌ERROR❌:\n", 2);
-	ft_putstr_fd("The map has only 2 line.", 2);
+	ft_putstr_fd("\e[31mERROR:\n", 2);
+	ft_putstr_fd("The map is to small to be a map", 2);
 	ft_putstr_fd("\e[0m\n", 2);
 	if (map->full_map)
 		ft_freeup(map->full_map);

@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:26:25 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/22 12:37:56 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/03/31 10:34:43 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,6 @@ typedef struct s_map
 }				t_map;
 
 /* function that check if the map file and the map is valid */
-void			ft_arguments_check(t_map *map);
-void			ft_file_not_empty(char *file);
 void			ft_read_map(t_map *map);
 void			ft_newline_check(char *map);
 void			ft_is_map_rectangular(t_map *map);
