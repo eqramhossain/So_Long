@@ -6,7 +6,7 @@
 /*   By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 12:28:55 by ehossain          #+#    #+#             */
-/*   Updated: 2025/03/31 10:40:36 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/04/01 18:23:44 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,10 @@ static void	ft_file_not_empty(char *file)
 		ft_error_exit("File not found. Does the file even exists!");
 	next_line = get_next_line(fd);
 	if (!next_line)
+	{
+		close(fd);
 		ft_error_exit("File is empty");
+	}
 	while (next_line)
 	{
 		free(next_line);
