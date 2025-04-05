@@ -6,16 +6,16 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/17 12:34:44 by ehossain          #+#    #+#              #
-#    Updated: 2025/03/31 10:20:51 by ehossain         ###   ########.fr        #
+#    Updated: 2025/04/05 22:53:56 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SOURCE = $(shell find ./sources -name "*.c")
 OBJ = $(SOURCE:.c=.o)
-LIBFT_LIB_PATH = ./libft/include
+LIBFT_INCLUDE_PATH = ./libft/include
 LIBFT = ./libft/libft.a
 NAME = so_long
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
 MAKE = make --no-print-directory
 
@@ -26,7 +26,7 @@ $(NAME): $(OBJ) $(LIBFT)
 	@echo "$(GREEN)so_long complied$(END)"
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -I$(LIBFT_LIB_PATH) -Isources -Iminilibx -O3 -c $< -o $@ 
+	@$(CC) $(CFLAGS) -I$(LIBFT_INCLUDE_PATH) -Isources -Iminilibx -O3 -c $< -o $@ 
 
 $(LIBFT):
 	@$(MAKE) -C libft
