@@ -6,11 +6,30 @@
 #    By: ehossain <ehossainstudent.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/17 12:34:44 by ehossain          #+#    #+#              #
-#    Updated: 2025/05/27 18:34:52 by ehossain         ###   ########.fr        #
+#    Updated: 2025/05/28 20:37:53 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SOURCE = $(shell find ./sources -name "*.c")
+SOURCE = ./src/ft_all_character.c \
+./src/ft_destroy_image.c \
+./src/ft_error_exit.c \
+./src/ft_exit_open.c \
+./src/ft_free.c \
+./src/ft_is_map_rectangular.c \
+./src/ft_keypress.c \
+./src/ft_main.c \
+./src/ft_map_closed_left_right.c \
+./src/ft_map_closed_top_bottom.c \
+./src/ft_movements_left_right.c \
+./src/ft_movements_up_down.c \
+./src/ft_newline_check.c \
+./src/ft_print_elements_to_window.c \
+./src/ft_read_map.c \
+./src/ft_redraw_map.c \
+./src/ft_valid_path_check.c \
+./src/ft_win.c \
+./src/ft_xpm_to_image.c
+
 OBJ = $(SOURCE:.c=.o)
 LIBFT_INCLUDE_PATH = ./libft/include
 LIBFT = ./libft/libft.a
