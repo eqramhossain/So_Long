@@ -6,7 +6,7 @@
 #    By: ehossain <ehossainstudent.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/17 12:34:44 by ehossain          #+#    #+#              #
-#    Updated: 2025/05/28 20:37:53 by ehossain         ###   ########.fr        #
+#    Updated: 2025/05/29 15:24:50 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ $(NAME): $(OBJ) $(LIBFT)
 	@echo "$(GREEN)so_long complied$(END)"
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -I$(LIBFT_INCLUDE_PATH) -Isources -Iminilibx -O3 -c $< -o $@ 
+	@$(CC) $(CFLAGS) -I$(LIBFT_INCLUDE_PATH) -Isrc -Iminilibx -O3 -c $< -o $@ 
 
 $(LIBFT):
 	@$(MAKE) -C libft
@@ -67,7 +67,7 @@ re: fclean
 
 norm:
 	norminette libft 
-	norminette sources
+	norminette src
 
 .PHONY: clean fclean re all norm
 
