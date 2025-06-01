@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ehossain <ehossainstudent.42.fr>          +#+  +:+       +#+         #
+#    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/02/17 12:34:44 by ehossain          #+#    #+#              #
-#    Updated: 2025/05/29 15:24:50 by ehossain         ###   ########.fr        #
+#    Created: 2025/06/01 16:52:58 by ehossain          #+#    #+#              #
+#    Updated: 2025/06/01 16:53:02 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,12 +26,12 @@ SOURCE = ./src/ft_all_character.c \
 ./src/ft_print_elements_to_window.c \
 ./src/ft_read_map.c \
 ./src/ft_redraw_map.c \
-./src/ft_valid_path_check.c \
+./src/ft_flood_fill_verif.c \
 ./src/ft_win.c \
 ./src/ft_xpm_to_image.c
 
 OBJ = $(SOURCE:.c=.o)
-LIBFT_INCLUDE_PATH = ./libft/include
+INCLUDE = ./include
 LIBFT = ./libft/libft.a
 NAME = so_long
 CC = cc
@@ -45,7 +45,7 @@ $(NAME): $(OBJ) $(LIBFT)
 	@echo "$(GREEN)so_long complied$(END)"
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -I$(LIBFT_INCLUDE_PATH) -Isrc -Iminilibx -O3 -c $< -o $@ 
+	@$(CC) $(CFLAGS) -I$(INCLUDE) -Iminilibx -O3 -c $< -o $@ 
 
 $(LIBFT):
 	@$(MAKE) -C libft

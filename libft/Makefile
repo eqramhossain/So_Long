@@ -6,7 +6,7 @@
 #    By: ehossain <ehossain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/23 14:36:30 by ehossain          #+#    #+#              #
-#    Updated: 2025/05/28 20:37:10 by ehossain         ###   ########.fr        #
+#    Updated: 2025/06/01 16:55:17 by ehossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ SOURCE = ./src/ft_printf/ft_find_format.c \
 ./src/get_next_line/get_next_line_utils.c
 
 NAME = libft.a
+INCLUDE = ../include
 OBJECT = ${SOURCE:.c=.o}
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
@@ -67,7 +68,7 @@ $(NAME) : $(OBJECT)
 	@ar rcs $(NAME) $(OBJECT)
 
 %.o:%.c
-	@$(CC) $(CFLAGS) -Iinclude -c $< -o $@
+	@$(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o $@
 
 clean : 
 	@rm -rf $(OBJECT)
